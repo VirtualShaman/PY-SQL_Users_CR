@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users CR</title>
+</head>
+<body>
+    <table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Created At</th>
+    </tr>
+    {% for user in users: %}
+        <tr>
+            <td>{{user.users_id}}</td>
+            <td>{{user.first_name}} {{user.last_name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.created_at}}</td>
+        </tr>
+    {% endfor %}
+    <button onclick='location.href="/new"'>Add New User</button>
+    </table>
+</body>
+</html>
