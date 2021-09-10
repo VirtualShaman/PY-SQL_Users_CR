@@ -10,6 +10,9 @@ class User:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
     # Now we use class methods to query our database
+
+
+
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM users;"
@@ -21,9 +24,40 @@ class User:
         for user in results:
             users.append( cls(user) )
         return users
+
+
+
+    @classmethod
+    def get_one(cls, data):
+        query = "SELECT * FROM users WHERE users_id=%(users_id)s;"
+        
+        result = connectToMySQL('users_schema').query_db(query, data)
+
+        user = cls(result[0])
+        
+        return user
     
+
+
     @classmethod
     def save(cls, data):
         query = "INSERT INTO users(first_name, last_name, email, created_at, updated_at) VALUES(%(first_name)s, %(last_name)s, %(email)s, NOW(), NOW())"
         
+        return connectToMySQL('users_schema').query_db( query, data )
+
+
+
+    @classmethod
+    def edit(cls, data):
+        query = "UPDATE users SET first_name = %(first_name)s, last_name = %(last_name)s, email = %(email)s, updated_at = NOW() WHERE users_id=%(users_id)s;"
+        
+        return connectToMySQL('users_schema').query_db( query, data )
+
+    
+
+    @classmethod
+    def delete(cls, data):
+
+        query = "DELETE FROM users WHERE users_id=%(users_id)s;"
+
         return connectToMySQL('users_schema').query_db( query, data )

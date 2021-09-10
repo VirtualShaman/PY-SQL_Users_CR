@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h3>Full Name: {{users.first_name}} {{users.last_name}}</h3>
+        <h3>Email: {{users.email}}</h3>
+        <h3>Created On: {{users.created_at}}</h3>
+        <h3>Last Updated On: {{users.created_at}}</h3>
+        <a href="/user/{{users.users_id}}">Show</a> | 
+        <a href="/change/{{users.users_id}}">Edit</a> | 
+        <a href="/delete/{{users.users_id}}">Delete</a>
+        <br>
+        <button onclick='location.href="/users"'>Home</button>
+    </div>
+</body>
+</html>

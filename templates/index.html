@@ -8,21 +8,27 @@
 </head>
 <body>
     <table>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Created At</th>
-    </tr>
-    {% for user in users: %}
         <tr>
-            <td>{{user.users_id}}</td>
-            <td>{{user.first_name}} {{user.last_name}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.created_at}}</td>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Created At</th>
+            <th>Actions</th>
         </tr>
-    {% endfor %}
-    <button onclick='location.href="/new"'>Add New User</button>
+        {% for user in users: %}
+            <tr>
+                <td>{{user.users_id}}</td>
+                <td>{{user.first_name}} {{user.last_name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.created_at}}</td>
+                <td>
+                    <a href="/user/{{user.users_id}}">Show</a> | 
+                    <a href="/change/{{user.users_id}}">Edit</a> | 
+                    <a href="/delete/{{user.users_id}}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        <button onclick='location.href="/new"'>Add New User</button>
     </table>
 </body>
 </html>
